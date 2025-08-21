@@ -35,7 +35,14 @@ GROUP BY p.ProductID, p.ProductName
 
 SELECT Distinct  p.ProductID pProductName
 FROM Employees e JOIN Orders o on  e.EmployeeID = o.EmployeeID 
-                JOIN[Order Details] OD ON O.OrderID = od.OrderID
-                JOIN Products p on p.ProductID = od.ProductID
+                 JOIN[Order Details] OD ON O.OrderID = od.OrderID
+                 JOIN Products p on p.ProductID = od.ProductID
 WHERE e.FirstName = 'Nancy'           
  ORDER BY p.ProductID
+
+SELECT *
+from Customers c  join Orders o on c.CustomerID = o.CustomerID
+                  JOIN [Order Details] od on o. OrderID = od.OrderID
+                  JOIN Products p on p.ProductID = od.ProductID
+                  join Suppliers s on s.SupplierID = p.SupplierID
+WHERE c.CompanyName = 'Around the Horn'
