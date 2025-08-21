@@ -8,6 +8,6 @@ From   Products AS p JOIN Categories as c
 ON     p.CategoryID = C.CategoryID
 WHERE  CategoryName ='seafood'
 
-SELECT CompanyName, OrderID
-FROM  Orders, Shippers ShipperID = Orders Shipvia
-WHERE 
+
+SELECT * from Orders WHERE OrderID =10250
+SELECT * FROM [Order Details] WHERE orderID = 10250
