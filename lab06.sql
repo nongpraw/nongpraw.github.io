@@ -8,7 +8,6 @@ From   Products AS p JOIN Categories as c
 ON     p.CategoryID = C.CategoryID
 WHERE  CategoryName ='seafood'
 
-
 SELECT * from Orders WHERE OrderID =10250
 SELECT * FROM [Order Details] WHERE orderID = 10250
 
@@ -19,3 +18,8 @@ Where Country in ('usa','uk')
 SELECT e.EmployeeID, FirstName, o.OrderID
 from Employees e join Orders o on e.EmployeeID = o.EmployeeID
 order by EmployeeID
+
+SELECT  o.OrderID  เลขใบสั่งซื้อ, c.CompanyName ลูกค้า,
+        E.FirstName พนักงาน, O.ShipAddress ส่งไปที่
+From Orders O   join Customers C on O.CustomerID = C.CustomerID 
+                JOIN Employees E on O.EmployeeID =E.EmployeeID
