@@ -22,4 +22,13 @@ order by EmployeeID
 SELECT  o.OrderID  เลขใบสั่งซื้อ, c.CompanyName ลูกค้า,
         E.FirstName พนักงาน, O.ShipAddress ส่งไปที่
 From Orders O   join Customers C on O.CustomerID = C.CustomerID 
-                JOIN Employees E on O.EmployeeID =E.EmployeeID
+                JOIN Employees E on O.EmployeeID = E.EmployeeID
+
+SELECT s.CompanyName, count(*) จำนวนorders
+From Shippers s join Orders o on s.ShipperID = o.ShipVia
+GROUP BY s.CompanyName
+ORDER BY 2 desc
+
+SELECT p.ProductID, p.ProductName, sum(Quantity)จำนวนที่ขายได้
+from Products p JOIN [Order Details] od on p.ProductID =od.ProductID
+GROUP BY p.ProductID, p.ProductName 
