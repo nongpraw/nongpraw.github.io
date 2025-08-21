@@ -40,9 +40,16 @@ FROM Employees e JOIN Orders o on  e.EmployeeID = o.EmployeeID
 WHERE e.FirstName = 'Nancy'           
  ORDER BY p.ProductID
 
-SELECT *
+SELECT distinct s.Country
 from Customers c  join Orders o on c.CustomerID = o.CustomerID
                   JOIN [Order Details] od on o. OrderID = od.OrderID
                   JOIN Products p on p.ProductID = od.ProductID
                   join Suppliers s on s.SupplierID = p.SupplierID
 WHERE c.CompanyName = 'Around the Horn'
+
+SELECT p.ProductID, p.ProductName,SUM(Quantity) จำนวนที่ซื้อ
+from Customers c  join Orders o on c.CustomerID = o.CustomerID
+                  JOIN [Order Details] od on o. OrderID = od.OrderID
+                  JOIN Products p on p.ProductID = od.ProductID
+WHERE c.CompanyName = 'Around the Horn'
+GROUP BY p.ProductID, p.ProductName
