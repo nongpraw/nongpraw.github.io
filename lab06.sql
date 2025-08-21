@@ -53,3 +53,8 @@ from Customers c  join Orders o on c.CustomerID = o.CustomerID
                   JOIN Products p on p.ProductID = od.ProductID
 WHERE c.CompanyName = 'Around the Horn'
 GROUP BY p.ProductID, p.ProductName
+
+SELECT o.OrderID, FirstName, ROUND(sum(od.Quantity* od.UnitPrice*(1-Discount)),2) TotalCash
+FROM Orders o JOIN Employees e on o.EmployeeID = e.EmployeeID
+            JOIN[Order Details] od on o.OrderID = od.OrderID
+GROUP by o.OrderID, FirstName
