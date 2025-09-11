@@ -38,7 +38,9 @@ SELECT * FROM Shippers
 
 
 INSERT into Shippers
-VALUE('บริษัทขนมมหาศาลจำกั')
+VALUE('บริษัทขนมมหาศาลจำกัด')
+
+
 
 
 -- ตรวจสอบข้อมูล
@@ -81,5 +83,9 @@ WHERE CustomerID = 'A0001'
 DELETE From Shippers
 WHERE ShipperID = 6
 
-SELECT * from Orders
-WHERE ShipperID = 
+SELECT *from Employees
+--ต้องการข้อมูล รหะสชื่อพนักงาาน และรหัสและชื่อหัวพนักงาน
+SELECT emp.EmployeeID, emp.FirstName ชื่อหัวพนักงาน,
+    boss.EmployeeID, boss.FILENAME ชื่อหัวหน้า
+From Employees emp JOIN Employees boss    
+
