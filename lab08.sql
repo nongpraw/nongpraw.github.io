@@ -1,8 +1,51 @@
 -- 1.   จงแสดงให้เห็นว่าพนักงานแต่ละคนขายสินค้าประเภท Beverage ได้เป็นจำนวนเท่าใด และเป็นจำนวนกี่ชิ้น เฉพาะครึ่งปีแรกของ 2540(ทศนิยม 4 ตำแหน่ง)
+SELECT e.EmployeeID,
+       e.FirstName + ' ' + e.LastName AS EmployeeName,
+       SUM(od.Quantity) AS TotalQuantity,
+       CAST(SUM(od.Quantity) AS DECIMAL(10,4)) AS Quantity_4Dec
+FROM Orders o
+JOIN OrderDetails od ON o.OrderID = od.OrderID
+JOIN Products p ON od.ProductID = p.ProductID
+JOIN Categories c ON p.CategoryID = c.CategoryID
+JOIN Employees e ON o.EmployeeID = e.EmployeeID
+WHERE c.CategoryName = 'Beverages'
+  AND o.OrderDate BETWEEN '1997-01-01' AND '1997-06-30'
+GROUP BY e.EmployeeID, e.FirstName, e.LastName;
+
 -- 2.   จงแสดงชื่อบริษัทตัวแทนจำหน่าย  เบอร์โทร เบอร์แฟกซ์ ชื่อผู้ติดต่อ จำนวนชนิดสินค้าประเภท Beverage ที่จำหน่าย โดยแสดงจำนวนสินค้า จากมากไปน้อย 3 อันดับแรก
+SELECT TOP 3 s.CompanyName, s.Phone, s.Fax, s.ContactName,
+       COUNT(DISTINCT p.ProductID) AS BeverageCount
+FROM Suppliers s
+JOIN Products p ON s.SupplierID = p.SupplierID
+JOIN Categories c ON p.CategoryID = c.CategoryID
+WHERE c.CategoryName = 'Beverages'
+GROUP BY s.CompanyName, s.Phone, s.Fax, s.ContactName
+ORDER BY BeverageCount DESC;
+
 -- 3.   จงแสดงข้อมูลชื่อลูกค้า ชื่อผู้ติดต่อ เบอร์โทรศัพท์ ของลูกค้าที่ซื้อของในเดือน สิงหาคม 2539 ยอดรวมของการซื้อโดยแสดงเฉพาะ ลูกค้าที่ไม่มีเบอร์แฟกซ์
+SELECT c.CompanyName, c.ContactName, c.Phone,
+       SUM(od.Quantity * od.UnitPrice * (1-od.Discount)) AS TotalPurchase
+FROM Orders o
+JOIN Customers c ON o.CustomerID = c.CustomerID
+JOIN OrderDetails od ON o.OrderID = od.OrderID
+WHERE MONTH(o.OrderDate) = 8 AND YEAR(o.OrderDate) = 1996
+  AND c.Fax IS NULL
+GROUP BY c.CompanyName, c.ContactName, c.Phone;
+
 -- 4.   แสดงรหัสสินค้า ชื่อสินค้า จำนวนที่ขายได้ทั้งหมดในปี 2541 ยอดเงินรวมที่ขายได้ทั้งหมดโดยเรียงลำดับตาม จำนวนที่ขายได้เรียงจากน้อยไปมาก พรอ้มทั้งใส่ลำดับที่ ให้กับรายการแต่ละรายการด้วย
+SELECT ROW_NUMBER() OVER (ORDER BY SUM(od.Quantity) ASC) AS Rank,
+       p.ProductID, p.ProductName,
+       SUM(od.Quantity) AS TotalQuantity,
+       SUM(od.Quantity * od.UnitPrice * (1-od.Discount)) AS TotalAmount
+FROM OrderDetails od
+JOIN Orders o ON od.OrderID = o.OrderID
+JOIN Products p ON od.ProductID = p.ProductID
+WHERE YEAR(o.OrderDate) = 1998
+GROUP BY p.ProductID, p.ProductName
+ORDER BY TotalQuantity ASC;
+
 -- 5.   จงแสดงข้อมูลของสินค้าที่ขายในเดือนมกราคม 2540 เรียงตามลำดับจากมากไปน้อย 5 อันดับใส่ลำดับด้วย รวมถึงราคาเฉลี่ยที่ขายให้ลูกค้าทั้งหมดด้วย
+
 -- 6.   จงแสดงชื่อพนักงาน จำนวนใบสั่งซื้อ ยอดเงินรวมทั้งหมด ที่พนักงานแต่ละคนขายได้ ในเดือน ธันวาคม 2539 โดยแสดงเพียง 5 อันดับที่มากที่สุด
 -- 7.   จงแสดงรหัสสินค้า ชื่อสินค้า ชื่อประเภทสินค้า ที่มียอดขาย สูงสุด 10 อันดับแรก ในเดือน ธันวาคม 2539 โดยแสดงยอดขาย และจำนวนที่ขายด้วย
 -- 8.   จงแสดงหมายเลขใบสั่งซื้อ ชื่อบริษัทลูกค้า ที่อยู่ เมืองประเทศของลูกค้า ชื่อเต็มพนักงานผู้รับผิดชอบ ยอดรวมในแต่ละใบสั่งซื้อ จำนวนรายการสินค้าในใบสั่งซื้อ และเลือกแสดงเฉพาะที่จำนวนรายการในใบสั่งซื้อมากกว่า 2 รายการ
