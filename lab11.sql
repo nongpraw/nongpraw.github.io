@@ -1,5 +1,5 @@
---67040233123 ZooDB Data Dictionary
-CREATE DATABASE ZooDB
+
+CREATE DATABASE ZooDB;
 CREATE TABLE AnimalType (
     animal_type_id INT PRIMARY KEY,
     type_name NVARCHAR(100) NOT NULL,
@@ -69,4 +69,4 @@ CREATE TABLE FeedingSchedule (
     FOREIGN KEY (food_id) REFERENCES Food(food_id),
     FOREIGN KEY (keeper_id) REFERENCES Keeper(keeper_id)
 );
-SELECT * from Animal
+SELECT * from Food
