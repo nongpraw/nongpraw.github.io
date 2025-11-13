@@ -1,39 +1,128 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>แนะนำตัวเอง</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            padding: 20px;
-        }
-        .container {
-            max-width: 600px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #0066cc;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio นักศึกษา</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --accent:#c62828; /* red */
+      --muted:#6b6b6b;
+      --bg:#fafafa;
+      --card:#ffffff;
+      --maxw:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:'Kanit',system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;
+      background:linear-gradient(180deg, #fff 0%, #fbfbfd 100%);
+      color:#111;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:32px 16px;
+      display:flex;justify-content:center;
+    }
+    .wrap{
+      width:100%;max-width:var(--maxw);background:var(--card);border-radius:12px;padding:26px;box-shadow:0 8px 30px rgba(18,18,18,0.06);
+      display:flex;flex-direction:column;gap:30px;
+    }
+    h2{color:var(--accent);margin-bottom:8px}
+    p,li{font-size:15px;line-height:1.6}
+    section{background:#fff; border-radius:12px; padding:20px; box-shadow:0 4px 15px rgba(0,0,0,0.05);}
+    img{border-radius:12px;object-fit:cover}
+    footer{margin-top:12px;color:var(--muted);font-size:13px;text-align:center}
+    .skills-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+    .tag{background:#f3f3f3;padding:6px 10px;border-radius:999px;font-size:14px}
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>แนะนำตัวเอง</h1>
-        <p><strong>ชื่อ:</strong> พิมพ์ชนก พันธุ์ภักดีนุพงษ์</p>
-        <p><strong>ชื่อเล่น:</strong> พราว</p>
-        <p><strong>อายุ:</strong> 19 ปี</p>
-        <p><strong>อาชีพ:</strong> นักพัฒนาเว็บไซต์</p>
-        <p><strong>ความสามารถ:</strong> HTML, CSS, JavaScript, PHP</p>
-        <p><strong>งานอดิเรก:</strong> อ่านหนังสือ, เล่นเกม, ฟังเพลง</p>
-        <p><strong>เป้าหมาย:</strong> อยากพัฒนาเว็บไซต์ที่มีประโยชน์และใช้งานง่ายสำหรับทุกคน</p>
-    </div>
+  <main class="wrap">
+
+    <!-- 1. แนะนำตัว -->
+    <section id="profile">
+      <h2>1. ส่วนแนะนำตัว (Profile)</h2>
+      <p>จุดประสงค์: ให้คนรู้ว่าเราเป็นใคร สนใจด้านไหน</p>
+      <div style="display:flex;align-items:center;gap:20px;margin-top:16px;flex-wrap:wrap;">
+        <img src="pic/praw.jpg" alt="Profile Photo" style="width:130px;height:130px;border:3px solid #eee;">
+        <div>
+          <h3>ชื่อ-นามสกุล พิมพ์ชนก พันธุ์ภักดีนุพง์</h3>
+          <p>ชื่อภาษาอังกฤษ: Phimchanok Phanphakdeenuphong</p>
+          <p>คณะวิทยาศาสตร์ สาขาเทคโนโลยีสารสนเทศ</p>
+          <p>มหาวิทยาลัยราชภัฏอุดรธานี | นักศึกษาปีที่ 2</p>
+          <p>ความสนใจเฉพาะทาง: <strong>Artificial Intelligence, Web Development, Data Science</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. ทักษะ -->
+    <section id="skills">
+      <h2>2. ทักษะ (Skills)</h2>
+      <p>แสดงให้เห็นว่าทำอะไรได้บ้าง ทั้งทางเทคนิคและเครื่องมือที่ใช้</p>
+      <div class="skills-list">
+        <div class="tag">Python</div>
+        <div class="tag">Java</div>
+        <div class="tag">HTML</div>
+        <div class="tag">CSS</div>
+        <div class="tag">JavaScript</div>
+        <div class="tag">Git</div>
+        <div class="tag">VS Code</div>
+        <div class="tag">SQL</div>
+        <div class="tag">Figma</div>
+       
+      </div>
+      <p style="margin-top:16px;font-size:14px;color:#555;"><strong>Soft Skills:</strong> การทำงานเป็นทีม, การสื่อสาร, การบริหารเวลา, การคิดเชิงวิเคราะห์</p>
+    </section>
+
+    <!-- 3. ผลงาน -->
+    <section id="projects">
+      <h2>3. ผลงานที่ผ่านมา (Projects / Portfolio)</h2>
+      <ul>
+        <li>ระบบจองห้องประชุมออนไลน์ (Web Project)</li>
+        <li>AI ทำนายโรคเบาหวานด้วย Machine Learning (Data Project)</li>
+        <li>Dashboard วิเคราะห์ข้อมูลร้านกาแฟ (Data Visualization)</li>
+      </ul>
+      <p style="margin-top:8px;">สามารถใส่ลิงก์ไปยัง GitHub Repository หรือภาพ Screenshot ของผลงานได้</p>
+    </section>
+
+    <!-- 4. การศึกษา -->
+    <section id="education">
+      <h2>4. การศึกษา(เคยศึกษาที่โรงเรียนหนองหานวิทยา)</h2>
+      <ul>
+        <li>ตั้งแต่มัธยมต้น-มัธยมปลาย</li>
+     </ul>
+    </section>
+
+    <!-- 5. กิจกรรม -->
+    <section id="activities">
+      <h2>5. กิจกรรมและผลงานอื่น ๆ (Activities / Achievements)</h2>
+      <ul>
+        <li>อบรมเชิงปฏิบัติการการใช้งาน Dashboard เพื่อความมั่นคงปลอดภัยไซเบอร์</li>
+        <li>ขึ้นสแตนกิจกรรมวังเเดงเกมส์</li>
+        <li>เข้าร่วมกิจกรรมวันวิทยาศาสตร์</li>
+      </ul>
+    </section>
+
+    <!-- 6. ติดต่อ -->
+    <section id="contact">
+      <h2>6. ติดต่อ (Contact)</h2>
+      <p>Email: nong.praw12345678@gmail.com</p>
+      <p>GitHub: <a href="https://github.com/nongpraw" target="_blank">github.com/nongpraw</a></p>
+      <p>LinkedIn <a href="https://www.facebook.com/nong.praw.967" target="_blank">facebook.com/nong.praw.967</a></p>
+      <p>ที่อยู่: จังหวัดอุดรธานี</p>
+    </section>
+
+    <!-- 7. องค์ประกอบเสริม -->
+    <section id="career">
+      <h2>7. องค์ประกอบเสริม (Career Interest)</h2>
+      <p>เป้าหมายในอนาคต: อยากเป็นนักออกแบบ</p>
+    </section>
+
+    <footer>
+      © 2025 Portfolio นักศึกษา | Designed for GitHub Pages
+    </footer>
+  </main>
 </body>
 </html>
