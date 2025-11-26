@@ -83,25 +83,24 @@ $major = "สาขาเทคโนโลยีสารสนเทศ";
 $fullname = "พิมพ์ชนก พันธุ์ภักดีนุพงษ์";
 $nickname = "พราว";
 $intro = "วาดรูปหารายได้เสริม";
-$picture = "pic/profile.jpg"; // แก้ชื่อไฟล์มาตรฐาน
+$picture = "pic/praw.jpg"; 
 
 // ข้อมูลติดต่อ
 $facebook = "https://www.facebook.com/nong.praw.967";
-$instagram = "https://www.instagram.com/";
+$instagram = "https://www.instagram.com/direct/t/17842055330127433/";
 $email = "nong.praw12345678@gmail.com";
 
-// ไอคอนภาพ
-$icon_fb = "pic/facebook.png";
-$icon_ig = "pic/instagram.png";
-$icon_email = "pic/email.png";
-$default_img = "pic/default.jpg"; // กันภาพเสีย
+
+$icon_fb = "pic/Fb.jpg";
+$icon_ig = "pic/ig.jpg";
+$icon_email = "pic/email.jpg";
 ?>
 
 <!-- หน้าโปรไฟล์ -->
 <div id="profile-page" class="card">
     <h2>ข้อมูลนักศึกษา</h2>
     <div class="profile-box">
-        <img src="<?= $picture ?>" alt="profile" onerror="this.src='<?= $default_img ?>'">
+        <img src="<?= $picture ?>" alt="profile">
         <div>
             <p><b>มหาวิทยาลัย:</b> <?= $university ?></p>
             <p><b>คณะ:</b> <?= $faculty ?></p>
@@ -112,15 +111,9 @@ $default_img = "pic/default.jpg"; // กันภาพเสีย
 
             <!-- ข้อมูลติดต่อ -->
             <div class="contact">
-                <a href="<?= $facebook ?>" target="_blank">
-                    <img src="<?= $icon_fb ?>" onerror="this.src='<?= $default_img ?>'"> Facebook
-                </a>
-                <a href="<?= $instagram ?>" target="_blank">
-                    <img src="<?= $icon_ig ?>" onerror="this.src='<?= $default_img ?>'"> Instagram
-                </a>
-                <a href="mailto:<?= $email ?>">
-                    <img src="<?= $icon_email ?>" onerror="this.src='<?= $default_img ?>'"> <?= $email ?>
-                </a>
+                <a href="<?= $facebook ?>" target="_blank"><img src="<?= $icon_fb ?>" alt="FB"> Facebook</a>
+                <a href="<?= $instagram ?>" target="_blank"><img src="<?= $icon_ig ?>" alt="IG"> Instagram</a>
+                <a href="mailto:<?= $email ?>"><img src="<?= $icon_email ?>" alt="Email"> <?= $email ?></a>
             </div>
 
             <button onclick="showPage('loop-page')">กดดูงาน</button>
@@ -166,7 +159,7 @@ for($i=3;$i>=1;$i--){
 
         <!-- WHILE -->
         <div class="col">
-            <h3>Loop WHWHILE</h3>
+            <h3>Loop WHILE</h3>
             <button onclick="toggleVisibility('while-loop')">ดูผลลัพธ์</button>
             <pre id="while-loop" style="display:none;">
 <?php
