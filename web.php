@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="th">
 <head>
 <meta charset="UTF-8">
@@ -83,17 +83,23 @@ $major = "สาขาเทคโนโลยีสารสนเทศ";
 $fullname = "พิมพ์ชนก พันธุ์ภักดีนุพงษ์";
 $nickname = "พราว";
 $intro = "วาดรูปหารายได้เสริม";
-$picture = "pic/praw.jpg"; 
 
-// ข้อมูลติดต่อ
+/* ---------- รูปโปรไฟล์ ---------- */
+$picture = "P.jpg"; 
+$default_pic = "pic/default_profile.png"; // รูปพื้นฐาน หากรูปจริงไม่เจอ
+if (!file_exists($picture)) {
+    $picture = $default_pic;
+}
+
+/* ---------- ลิงก์ติดต่อ ---------- */
 $facebook = "https://www.facebook.com/nong.praw.967";
 $instagram = "https://www.instagram.com/direct/t/17842055330127433/";
 $email = "nong.praw12345678@gmail.com";
 
-
-$icon_fb = "pic/Fb.jpg";
-$icon_ig = "pic/ig.jpg";
-$icon_email = "pic/email.jpg";
+/* ---------- ไอคอนรูป ---------- */
+$icon_fb = "https://cdn-icons-png.flaticon.com/512/733/733547.png";
+$icon_ig = "https://cdn-icons-png.flaticon.com/512/2111/2111463.png";
+$icon_email = "https://cdn-icons-png.flaticon.com/512/732/732200.png";
 ?>
 
 <!-- หน้าโปรไฟล์ -->
@@ -111,9 +117,15 @@ $icon_email = "pic/email.jpg";
 
             <!-- ข้อมูลติดต่อ -->
             <div class="contact">
-                <a href="<?= $facebook ?>" target="_blank"><img src="<?= $icon_fb ?>" alt="FB"> Facebook</a>
-                <a href="<?= $instagram ?>" target="_blank"><img src="<?= $icon_ig ?>" alt="IG"> Instagram</a>
-                <a href="mailto:<?= $email ?>"><img src="<?= $icon_email ?>" alt="Email"> <?= $email ?></a>
+                <a href="<?= $facebook ?>" target="_blank">
+                    <img src="<?= $icon_fb ?>" alt="FB"> Facebook
+                </a>
+                <a href="<?= $instagram ?>" target="_blank">
+                    <img src="<?= $icon_ig ?>" alt="IG"> Instagram
+                </a>
+                <a href="mailto:<?= $email ?>">
+                    <img src="<?= $icon_email ?>" alt="Email"> <?= $email ?>
+                </a>
             </div>
 
             <button onclick="showPage('loop-page')">กดดูงาน</button>
